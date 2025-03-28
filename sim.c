@@ -138,6 +138,7 @@ void process_maxShiftedSequence(int sequences[M][M], double random_numbers[M][M]
         display_sequence(max_seed, sequences[max_seed], random_numbers[max_seed], sequence_lengths[max_seed]);
         
         // shift seed, to 10th number in sequence
+        //  if (sequence_length[max_seed] >= 10) {...}
         int new_seed = sequences[max_seed][9];
         int new_sequence[M], new_length;
         double new_random_numbers[M];
