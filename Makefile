@@ -2,7 +2,7 @@ all: sim
 
 sim: 
 	gcc sim.c -o sim
-	touch results.doc
+	touch Results.doc
 
 clean: 
 	rm sim Results.doc
