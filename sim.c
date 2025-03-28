@@ -20,9 +20,10 @@ void display_genSEED27();
 void process_all_sequences();
 
 
-int main() {
-    display_genSEED27();
-    process_all_sequences();
+//  main function
+int main(void) {
+    display_genSEED27(); // LCM generated sequence for SEED (X0) , 27
+    process_all_sequences(); // 100 LCM generated sequences
 
     return 0;
 }
@@ -104,7 +105,7 @@ void display_sequence(int seed, int *sequence, double *random_numbers, int lengt
 void find_maxSequences(int sequences[M][M], int *sequence_lengths, int *max_seeds, int *max_count) {
     int max_length = 0;
     
-    // Find the maximal length
+    // find the maximal length
     for (int seed = 0; seed < M; ++seed) {
         if (sequence_lengths[seed] > max_length) {
             max_length = sequence_lengths[seed];
@@ -112,7 +113,7 @@ void find_maxSequences(int sequences[M][M], int *sequence_lengths, int *max_seed
     }
     printf("\n =>>> Maximal length of a Sequence is : %d \n", max_length);
     
-    // Collect all seeds with the maximal length
+    // collect all seeds with the maximal length
     *max_count = 0;
     for (int seed = 0; seed < M; ++seed) {
         if (sequence_lengths[seed] == max_length) {
@@ -130,22 +131,20 @@ void process_maxShiftedSequence(int sequences[M][M], double random_numbers[M][M]
     int max_seeds[M], max_count;
     find_maxSequences(sequences, sequence_lengths, max_seeds, &max_count);
     
-    // display a maximal sequence
+    // display and then shift maximal sequence
     if (max_count > 0) {
         int max_seed = max_seeds[0];
         printf("\nMaximal Length Sequence (Seed %d):\n", max_seed);
         display_sequence(max_seed, sequences[max_seed], random_numbers[max_seed], sequence_lengths[max_seed]);
         
-        // Shift Seed, if the sequence length is at least 10
-        if (sequence_lengths[max_seed] >= 10) {
-            int new_seed = sequences[max_seed][9];
-            int new_sequence[M], new_length;
-            double new_random_numbers[M];
-            generate_sequence(new_seed, new_sequence, new_random_numbers, &new_length);
-            
-            printf("\nUsing 10th number (%d) as new seed:\n", new_seed);
-            display_sequence(new_seed, new_sequence, new_random_numbers, new_length);
-        }
+        // shift seed, to 10th number in sequence
+        int new_seed = sequences[max_seed][9];
+        int new_sequence[M], new_length;
+        double new_random_numbers[M];
+        generate_sequence(new_seed, new_sequence, new_random_numbers, &new_length);
+        
+        printf("\nUsing 10th number (%d) as new seed:\n", new_seed);
+        display_sequence(new_seed, new_sequence, new_random_numbers, new_length);
     }
 }
 
@@ -161,7 +160,7 @@ void display_genSEED27() {
 
 // function to process and display all sequences 
 void process_all_sequences() {
-    // M - 100
+    // M = 100
     int all_sequences[M][M] = {{0}};
     double all_random_numbers[M][M] = {{0}};
     int sequence_lengths[M] = {0};
