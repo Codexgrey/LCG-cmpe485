@@ -20,7 +20,6 @@ void display_genSEED27();
 void process_all_sequences();
 
 
-//  main function
 int main(void) {
     display_genSEED27(); // LCM generated sequence for SEED (X0) , 27
     process_all_sequences(); // 100 LCM generated sequences
@@ -29,7 +28,7 @@ int main(void) {
 }
 
 
-// function to generate a sequence using LCG
+// generate a sequence using LCG
 void generate_sequence(int seed, int *sequence, double *random_numbers, int *length) {
     bool seen[M] = {false};
     int Xn = seed;
@@ -46,7 +45,7 @@ void generate_sequence(int seed, int *sequence, double *random_numbers, int *len
 }
 
 
-// function to find all unique sequences for X0 in range [0, 99]
+// find all unique sequences for X0 in range [0, 99]
 void find_all_sequences(int sequences[M][M], double random_numbers[M][M], int *sequence_lengths) {
     bool unique[M] = {false};
     int temp_sequence[M], length;
@@ -65,7 +64,7 @@ void find_all_sequences(int sequences[M][M], double random_numbers[M][M], int *s
 }
 
 
-// function to display all sequences
+// display all sequences
 void display_all_sequences(int sequences[M][M], double random_numbers[M][M], int *sequence_lengths) {
     printf("\n Finding all possible sequences...\n");
     printf("Seed | Sequence \n");
@@ -87,7 +86,7 @@ void display_all_sequences(int sequences[M][M], double random_numbers[M][M], int
 }
 
 
-// function to display single sequence
+// display single sequence
 void display_sequence(int seed, int *sequence, double *random_numbers, int length) {
     printf("Generated Sequence for seed %d: ", seed);
     for (int i = 0; i < length; i++) {
@@ -101,7 +100,7 @@ void display_sequence(int seed, int *sequence, double *random_numbers, int lengt
 }
 
 
-// function to find the maximal length sequences
+// find the maximal length sequences
 void find_maxSequences(int sequences[M][M], int *sequence_lengths, int *max_seeds, int *max_count) {
     int max_length = 0;
     
@@ -126,7 +125,7 @@ void find_maxSequences(int sequences[M][M], int *sequence_lengths, int *max_seed
 }
 
 
-// function to handle maximal length sequences and shifted sequences
+// handle maximal length sequences and shifted sequences
 void process_maxShiftedSequence(int sequences[M][M], double random_numbers[M][M], int *sequence_lengths) {
     int max_seeds[M], max_count;
     find_maxSequences(sequences, sequence_lengths, max_seeds, &max_count);
@@ -150,7 +149,7 @@ void process_maxShiftedSequence(int sequences[M][M], double random_numbers[M][M]
 }
 
 
-// function to display generated sequence for SEED 27
+// display generated sequence for SEED 27
 void display_genSEED27() {
     int sequence[M], length;
     double random_numbers[M];
@@ -159,7 +158,7 @@ void display_genSEED27() {
 }
 
 
-// function to process and display all sequences 
+// process and display all sequences 
 void process_all_sequences() {
     // M = 100
     int all_sequences[M][M] = {{0}};
