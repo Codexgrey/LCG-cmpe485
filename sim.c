@@ -21,14 +21,18 @@ void process_all_sequences();
 
 
 int main(void) {
-    display_genSEED27(); // LCM generated sequence for SEED (X0) , 27
-    process_all_sequences(); // 100 LCM generated sequences
+    /*
+        - display LCM generated sequence for SEED (X0), 27
+        - process all (100) LCM generated sequences
+    */
+    display_genSEED27(); 
+    process_all_sequences(); 
 
     return 0;
 }
 
 
-// generate a sequence using LCG
+// generate a sequence using LCM
 void generate_sequence(int seed, int *sequence, double *random_numbers, int *length) {
     bool seen[M] = {false};
     int Xn = seed;
@@ -104,13 +108,12 @@ void display_sequence(int seed, int *sequence, double *random_numbers, int lengt
 void find_maxSequences(int sequences[M][M], int *sequence_lengths, int *max_seeds, int *max_count) {
     int max_length = 0;
     
-    // find the maximal length
     for (int seed = 0; seed < M; ++seed) {
         if (sequence_lengths[seed] > max_length) {
             max_length = sequence_lengths[seed];
         }
     }
-    printf("\n =>>> Maximal length of a Sequence is : %d \n", max_length);
+    printf("\n=>>> Maximal length of a Sequence is : %d\n", max_length);
     
     // collect all seeds with the maximal length
     *max_count = 0;
@@ -120,7 +123,7 @@ void find_maxSequences(int sequences[M][M], int *sequence_lengths, int *max_seed
             (*max_count)++;
         }
     }
-    printf("\n =>>> %d Sequences have maximal length. \n", *max_count);
+    printf("\n=>>> %d Sequences have maximal length.\n", *max_count);
 
 }
 
