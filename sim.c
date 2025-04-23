@@ -84,7 +84,7 @@ void display_all_sequences(int sequences[M][M], double random_numbers[M][M], int
             for (int i = 0; i < sequence_lengths[seed]; i++) {
                 printf("%.2f ", random_numbers[seed][i]);
             }
-            printf("\n");
+            printf("\n \n");
         }
     }
 }
@@ -100,7 +100,7 @@ void display_sequence(int seed, int *sequence, double *random_numbers, int lengt
     for (int i = 0; i < length; i++) {
         printf("%.2f ", random_numbers[i]);
     }
-    printf("\n");
+    printf("\n \n");
 }
 
 
